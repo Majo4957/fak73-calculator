@@ -29,6 +29,22 @@ app.get("/add", (c) => {
   return c.json({ result });
 });
 
+app.get("/reset", (c) => {
+  state = 0;
+  return c.json({ message: "State has been reset to 0" });
+});
+
+app.get("/crash", (c) => {
+  process.exit(1);
+});
+
+app.get("/stress", (c) => {
+  while (true) {
+    Math.sqrt(Math.random());
+  }
+});
+
+
 app.get("/", (c) => {
   return c.text("Hello Homo!");
 });
